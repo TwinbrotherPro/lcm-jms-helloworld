@@ -25,6 +25,14 @@
 			<version>2.0.1</version>
 		</dependency>
 
+		<!-- AWS SQS using JMS -->
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>amazon-sqs-java-messaging-lib</artifactId>
+			<version>1.0.2</version>
+			<type>jar</type>
+		</dependency>
+
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
