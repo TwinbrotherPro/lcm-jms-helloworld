@@ -24,9 +24,9 @@ import org.slf4j.LoggerFactory;
  * @author florian.haupt@iaas.uni-stuttgart.de
  *
  */
-public class HelloWorld {
+public class HelloWorldActiveMQ {
 
-	final static Logger logger = LoggerFactory.getLogger(HelloWorld.class);
+	final static Logger logger = LoggerFactory.getLogger(HelloWorldActiveMQ.class);
 
 	private static QueueConnectionFactory conFactory;
 	private static QueueConnection connection;
