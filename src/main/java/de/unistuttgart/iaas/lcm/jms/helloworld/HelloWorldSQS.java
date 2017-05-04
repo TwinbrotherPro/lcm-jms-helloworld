@@ -1,5 +1,7 @@
 package de.unistuttgart.iaas.lcm.jms.helloworld;
 
+import java.util.Enumeration;
+
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.Queue;
@@ -70,6 +72,7 @@ public class HelloWorldSQS {
 	    // create connection.
 	    connection = conFactory.createQueueConnection();
 	    // create session
+	    // https://docs.oracle.com/javaee/7/api/javax/jms/Session.html
 	    session = connection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
 	    // lookup queue (has to be created before, using e.g. the AWS management console)
 	    testQueue = session.createQueue(queueName);
@@ -89,6 +92,8 @@ public class HelloWorldSQS {
 	try {
 	    // create and send text message
 	    TextMessage msg = session.createTextMessage("Hello World!");
+	    // set property
+	    msg.setStringProperty("sender", "hauptfn");
 	    sender.send(msg);
 	    logger.debug("Sent message: {}", msg);
 	    logger.info("Sent: {}", msg.getText());
@@ -104,7 +109,15 @@ public class HelloWorldSQS {
 	    logger.debug("Received message: {}", msg);
 	    if (msg instanceof TextMessage) {
 		logger.info("Received: {}", ((TextMessage) msg).getText());
+		@SuppressWarnings("unchecked")
+		Enumeration<String> propNames = msg.getPropertyNames(); 
+		while (propNames.hasMoreElements()) {
+		    String pn = propNames.nextElement();
+		    logger.info("- {} = {}", pn, msg.getObjectProperty(pn));
+		}
 	    }
+	    // required when session is set to Session.CLIENT_ACKNOWLEDGE
+	    //msg.acknowledge();
 	} catch (JMSException e) {
 	    e.printStackTrace();
 	}
