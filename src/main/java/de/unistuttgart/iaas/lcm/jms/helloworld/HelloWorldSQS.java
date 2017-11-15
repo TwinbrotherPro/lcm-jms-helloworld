@@ -40,7 +40,7 @@ public class HelloWorldSQS {
 	private static QueueReceiver receiver;
 
 	// name of SQS queue, has to be created in advance
-	private static final String queueName = "jms-test-queue";
+	private static final String queueName = "fruit-queue";
 	// properties file containing the AWS API credentials (access key and secret
 	// key)
 	private static final String awsCredentialsFile = "src\\main\\resources\\aws.properties";
@@ -69,7 +69,7 @@ public class HelloWorldSQS {
 			// credential provider.
 			conFactory = SQSConnectionFactory
 							.builder()
-							.withRegion(Region.getRegion(Regions.EU_WEST_1))
+							.withRegion(Region.getRegion(Regions.US_WEST_2))
 							.withAWSCredentialsProvider(new PropertiesFileCredentialsProvider(awsCredentialsFile))
 							.build();
 
