@@ -11,3 +11,7 @@ The project contains two classes, each with its own `main` method.
 __Note: Do not rename__ `aws.properties.example` __to__ `aws.properties` __but rather create a new file named__ `aws.properties` __instead.__  
 Otherwise, Git will no longer ignore the file, possibly resulting in your AWS credentials being committed and pushed and available to everyone.
 * Create a SQS queue, e.g. using the AWS console, and then adjust `private static final String queueName = "..."` accordingly (`HelloWorldSQS.java, line 41`) 
+
+## This is my solution for the lcm-jms-helloworld exercise
+
+Feel free to pull request changes if you see better ways in solving this task then the current solution does.
